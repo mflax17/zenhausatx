@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen Haus | East Austin Wellness Residence</title>
+    <meta name="description" content="A private Japandi wellness retreat in Holly, East Austin. Heated pool, infrared sauna, cold plunge, yoga studio. Book direct and save.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cream: #F5F2ED;
+            --cream-dark: #EBE6DF;
+            --charcoal: #2C2C2C;
+            --charcoal-deep: #1A1A1A;
+            --warm-gray: #6B6560;
+            --warm-gray-light: #9A9590;
+            --terracotta: #A67C5B;
+            --terracotta-light: #C49A7A;
+            
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'DM Sans', -apple-system, sans-serif;
+            
+            --space-xs: 8px;
+            --space-sm: 16px;
+            --space-md: 32px;
+            --space-lg: 64px;
+            --space-xl: 120px;
+            --space-xxl: 180px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--cream);
+            color: var(--charcoal);
+            font-weight: 300;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            font-weight: 300;
+        }
+        
+        h1 {
+            font-size: clamp(3rem, 8vw, 7rem);
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
+        
+        h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+        
+        h3 {
+            font-size: clamp(1.25rem, 2vw, 1.75rem);
+            font-weight: 400;
+        }
+        
+        p {
+            font-size: 1rem;
+            max-width: 540px;
+        }
+        
+        .text-caps {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: var(--space-md) var(--space-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            mix-blend-mode: difference;
+        }
+        
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            transition: opacity 0.3s ease;
+        }
+        
+        nav a:hover {
+            opacity: 0.6;
+        }
+        
+        .nav-logo {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+        
+        .nav-links a {
+            font-family: var(--font-sans);
+            font-weight: 400;
+        }
+        
+        /* Hero */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero-image {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85);
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(26, 26, 26, 0.2) 0%,
+                rgba(26, 26, 26, 0.1) 50%,
+                rgba(26, 26, 26, 0.4) 100%
+            );
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: var(--cream);
+            padding: var(--space-md);
+        }
+        
+        .hero-content h1 {
+            margin-bottom: var(--space-sm);
+            animation: fadeUp 1.2s ease both;
+        }
+        
+        .hero-content .tagline {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.9;
+            animation: fadeUp 1.2s ease 0.2s both;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: var(--space-lg);
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--cream);
+            opacity: 0.7;
+            animation: fadeUp 1.2s ease 0.4s both, float 3s ease-in-out infinite;
+        }
+        
+        .scroll-indicator span {
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .scroll-indicator svg {
+            width: 20px;
+            height: 20px;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+        
+        /* Sections */
+        section {
+            padding: var(--space-xl) var(--space-lg);
+        }
+        
+        .section-narrow {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .intro {
+            padding: var(--space-xxl) var(--space-lg);
+        }
+        
+        .intro h2 {
+            margin-bottom: var(--space-md);
+        }
+        
+        .intro p {
+            margin: 0 auto;
+            color: var(--warm-gray);
+            font-size: 1.125rem;
+            line-height: 1.8;
+        }
+        
+        /* Editorial Image */
+        .editorial-image {
+            padding: 0;
+            margin: 0 var(--space-lg);
+        }
+        
+        .editorial-image img {
+            width: 100%;
+            height: 70vh;
+            object-fit: cover;
+        }
+        
+        .editorial-image-link {
+            padding: var(--space-md) 0;
+            display: flex;
+            justify-content: flex-end;
+            border-bottom: 1px solid rgba(107, 101, 96, 0.2);
+        }
+        
+        .editorial-image-link a {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .editorial-image-link a:hover {
+            opacity: 0.7;
+        }
+        
+        /* Features */
+        .features {
+            background: var(--charcoal-deep);
+            color: var(--cream);
+            padding: var(--space-xxl) var(--space-lg);
+        }
+        
+        .features-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .features-header .text-caps {
+            color: var(--terracotta-light);
+            margin-bottom: var(--space-sm);
+            display: block;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-lg);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-item {
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto var(--space-md);
+            stroke: var(--terracotta-light);
+        }
+        
+        .feature-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .feature-item p {
+            font-size: 0.875rem;
+            color: var(--warm-gray-light);
+            margin: 0 auto;
+        }
+        
+        /* Wellness */
+        .wellness {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 80vh;
+        }
+        
+        .wellness-image {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .wellness-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .wellness-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: var(--space-xl);
+            background: var(--cream-dark);
+        }
+        
+        .wellness-content .text-caps {
+            color: var(--terracotta);
+            margin-bottom: var(--space-md);
+        }
+        
+        .wellness-content h2 {
+            margin-bottom: var(--space-md);
+        }
+        
+        .wellness-content p {
+            color: var(--warm-gray);
+            margin-bottom: var(--space-md);
+            line-height: 1.8;
+        }
+        
+        .wellness-list {
+            list-style: none;
+            margin-top: var(--space-md);
+        }
+        
+        .wellness-list li {
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid rgba(107, 101, 96, 0.2);
+            font-size: 0.9375rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .wellness-list li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--terracotta);
+            border-radius: 50%;
+        }
+        
+        /* Neighborhood */
+        .neighborhood {
+            padding: var(--space-xxl) var(--space-lg);
+            text-align: center;
+        }
+        
+        .neighborhood .text-caps {
+            color: var(--terracotta);
+            margin-bottom: var(--space-md);
+            display: block;
+        }
+        
+        .neighborhood h2 {
+            margin-bottom: var(--space-md);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .neighborhood p {
+            margin: 0 auto var(--space-lg);
+            color: var(--warm-gray);
+            max-width: 600px;
+            font-size: 1.0625rem;
+            line-height: 1.8;
+        }
+        
+        .neighborhood-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            margin-top: var(--space-lg);
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--charcoal);
+        }
+        
+        .stat-label {
+            font-size: 0.8125rem;
+            color: var(--warm-gray);
+            margin-top: var(--space-xs);
+        }
+        
+        /* CTA */
+        .cta {
+            background: var(--charcoal-deep);
+            color: var(--cream);
+            padding: var(--space-xxl) var(--space-lg);
+            text-align: center;
+        }
+        
+        .cta h2 {
+            margin-bottom: var(--space-md);
+        }
+        
+        .cta p {
+            margin: 0 auto var(--space-lg);
+            color: var(--warm-gray-light);
+            max-width: 500px;
+        }
+        
+        .btn {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--cream);
+            color: var(--cream);
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: var(--cream);
+            color: var(--charcoal-deep);
+        }
+        
+        .btn-primary {
+            background: var(--terracotta);
+            border-color: var(--terracotta);
+        }
+        
+        .btn-primary:hover {
+            background: var(--terracotta-light);
+            border-color: var(--terracotta-light);
+            color: var(--charcoal-deep);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--charcoal-deep);
+            color: var(--cream);
+            padding: var(--space-lg);
+            border-top: 1px solid rgba(245, 242, 237, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+        }
+        
+        .footer-links a {
+            color: var(--warm-gray-light);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--cream);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: var(--space-md) auto 0;
+            padding-top: var(--space-md);
+            border-top: 1px solid rgba(245, 242, 237, 0.1);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8125rem;
+            color: var(--warm-gray);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .wellness {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: var(--space-lg) var(--space-md);
+            }
+            nav {
+                padding: var(--space-md);
+            }
+            .nav-links {
+                display: none;
+            }
+            .editorial-image {
+                margin: 0 var(--space-md);
+            }
+            .editorial-image img {
+                height: 50vh;
+            }
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-md);
+            }
+            .neighborhood-stats {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+            .footer-content, .footer-bottom {
+                flex-direction: column;
+                gap: var(--space-md);
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .wellness-content {
+                padding: var(--space-lg) var(--space-md);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="nav-logo">Zen Haus</a>
+        <div class="nav-links">
+            <a href="gallery.html">Gallery</a>
+            <a href="#wellness">Wellness</a>
+            <a href="#neighborhood">Location</a>
+            <a href="#book">Reserve</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-image">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQ5MzAzODc5NDI1MDE4Njg5Nw==/original/43747a2a-ddd7-4d9b-bf61-3e6e38d60474.jpeg" alt="Zen Haus East Austin">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Zen Haus</h1>
+            <p class="tagline">East Austin · Wellness Residence</p>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+    </section>
+
+    <section class="intro section-narrow">
+        <h2>A private wellness residence in East Austin</h2>
+        <p>Zen Haus blends Japanese serenity with Scandinavian warmth—a sanctuary designed for stillness, restoration, and reconnection. Four bedrooms. Four baths. One intention: rest.</p>
+    </section>
+
+    <div class="editorial-image">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQ5MzAzODc5NDI1MDE4Njg5Nw==/original/0126db52-28d0-4df0-8068-35c6f3a2a2f8.jpeg" alt="Living space">
+        <div class="editorial-image-link">
+            <a href="gallery.html">View Gallery</a>
+        </div>
+    </div>
+
+    <section class="features">
+        <div class="features-header">
+            <span class="text-caps">The Space</span>
+            <h2>Designed for restoration</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-item">
+                <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7M9 8h6" />
+                </svg>
+                <h3>4 Bedrooms</h3>
+                <p>King beds, luxury linens, blackout shades</p>
+            </div>
+            <div class="feature-item">
+                <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2 12c1.5-1.5 3-2 4.5-2s3 .5 4.5 2c1.5 1.5 3 2 4.5 2s3-.5 4.5-2M2 17c1.5-1.5 3-2 4.5-2s3 .5 4.5 2c1.5 1.5 3 2 4.5 2s3-.5 4.5-2M2 7c1.5-1.5 3-2 4.5-2s3 .5 4.5 2c1.5 1.5 3 2 4.5 2s3-.5 4.5-2" />
+                </svg>
+                <h3>Heated Pool</h3>
+                <p>Saltwater pool, year-round</p>
+            </div>
+            <div class="feature-item">
+                <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <h3>Infrared Sauna</h3>
+                <p>Red light therapy, deep restoration</p>
+            </div>
+            <div class="feature-item">
+                <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 2.25c0 0-6.75 8.25-6.75 12a6.75 6.75 0 1013.5 0c0-3.75-6.75-12-6.75-12zM9 14h6M12 11v6" />
+                </svg>
+                <h3>Cold Plunge</h3>
+                <p>Separate cold immersion tub</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="editorial-image">
+        <img src="primary.jpg" alt="Primary suite">
+        <div class="editorial-image-link">
+            <a href="gallery.html">View Gallery</a>
+        </div>
+    </div>
+
+    <section class="wellness" id="wellness">
+        <div class="wellness-image">
+            <img src="meditation-room.jpg" alt="Meditation room">
+        </div>
+        <div class="wellness-content">
+            <span class="text-caps">Wellness</span>
+            <h2>Stillness. Space. Ritual.</h2>
+            <p>Every detail supports your restoration—from the HEPA-filtered air to the organic bedding. Move, rest, recover.</p>
+            <ul class="wellness-list">
+                <li>Private yoga and fitness studio</li>
+                <li>Meditation room with shoji walls</li>
+                <li>Infrared red light therapy sauna</li>
+                <li>Separate cold plunge</li>
+                <li>Quince organic bedding</li>
+                <li>HEPA air filtration throughout</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="neighborhood" id="neighborhood">
+        <span class="text-caps">Location</span>
+        <h2>Holly, East Austin</h2>
+        <p>One of Austin's most walkable and vibrant neighborhoods. Named among Time Out's coolest in the world. Steps from the best of East Austin.</p>
+        <div class="neighborhood-stats">
+            <div class="stat">
+                <div class="stat-number">8 min</div>
+                <div class="stat-label">walk to East 6th Street</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">2 mi</div>
+                <div class="stat-label">to Downtown</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">15 min</div>
+                <div class="stat-label">walk to Lady Bird Lake Trail</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="book">
+        <h2>Reserve your stay</h2>
+        <p>Four bedrooms, eight guests maximum. Book direct for the best rate.</p>
+        <div style="margin-top: var(--space-lg);">
+            <a href="https://zenhausatx.guestybookings.com" target="_blank" class="btn btn-primary" style="padding: 20px 48px; font-size: 1rem;">Check Availability</a>
+        </div>
+        <p style="margin: var(--space-md) auto 0; font-size: 0.9375rem; color: var(--warm-gray-light);">Use code <strong style="color: var(--cream);">DIRECT5</strong> at checkout for 5% off</p>
+        <div style="margin-top: var(--space-md);">
+            <a href="mailto:hello@zenhausatx.com" class="btn">Or inquire directly</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Zen Haus</div>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/zenhausatx" target="_blank">Instagram</a>
+                <a href="mailto:hello@zenhausatx.com">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2025 Zen Haus. All rights reserved.</span>
+            <span>Holly, East Austin, Texas</span>
+        </div>
+    </footer>
+
+</body>
+</html>
