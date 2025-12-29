@@ -52,7 +52,6 @@
             overflow-x: hidden;
         }
         
-        /* Typography */
         h1, h2, h3 {
             font-family: var(--font-serif);
             font-weight: 300;
@@ -78,10 +77,6 @@
         p {
             font-size: 1rem;
             max-width: 540px;
-        }
-        
-        .text-secondary {
-            color: var(--warm-gray);
         }
         
         .text-caps {
@@ -219,14 +214,8 @@
         }
         
         @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         @keyframes float {
@@ -245,7 +234,6 @@
             text-align: center;
         }
         
-        /* Intro Section */
         .intro {
             padding: var(--space-xxl) var(--space-lg);
         }
@@ -261,61 +249,50 @@
             line-height: 1.8;
         }
         
-        /* Gallery Grid */
-        .gallery {
-            padding: var(--space-lg) 0;
+        /* Editorial Image */
+        .editorial-image {
+            padding: 0;
+            margin: 0 var(--space-lg);
         }
         
-        .gallery-header {
-            text-align: center;
-            margin-bottom: var(--space-lg);
-            padding: 0 var(--space-lg);
-        }
-        
-        .gallery-header .text-caps {
-            color: var(--terracotta);
-            margin-bottom: var(--space-sm);
-            display: block;
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-sm);
-            padding: 0 var(--space-lg);
-        }
-        
-        .gallery-item {
-            overflow: hidden;
-            position: relative;
-            aspect-ratio: 4/3;
-        }
-        
-        .gallery-item-wide {
-            grid-column: span 2;
-        }
-        
-        .gallery-item-tall {
-            grid-row: span 2;
-            aspect-ratio: auto;
-        }
-        
-        .gallery-item img {
+        .editorial-image img {
             width: 100%;
-            height: 100%;
+            height: 70vh;
             object-fit: cover;
-            transition: transform 0.8s ease;
         }
         
-        .gallery-item:hover img {
-            transform: scale(1.03);
+        .editorial-image-caption {
+            padding: var(--space-md) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(107, 101, 96, 0.2);
+        }
+        
+        .editorial-image-caption span {
+            font-size: 0.875rem;
+            color: var(--warm-gray);
+        }
+        
+        .editorial-image-caption a {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .editorial-image-caption a:hover {
+            opacity: 0.7;
         }
         
         /* Features */
         .features {
             background: var(--charcoal-deep);
             color: var(--cream);
-            padding: var(--space-xl) var(--space-lg);
+            padding: var(--space-xxl) var(--space-lg);
         }
         
         .features-header {
@@ -359,17 +336,11 @@
             margin: 0 auto;
         }
         
-        /* Wellness Section */
+        /* Wellness */
         .wellness {
             display: grid;
             grid-template-columns: 1fr 1fr;
             min-height: 80vh;
-        }
-        
-        .wellness-images {
-            display: grid;
-            grid-template-rows: 1fr 1fr;
-            gap: 4px;
         }
         
         .wellness-image {
@@ -479,7 +450,7 @@
             margin-top: var(--space-xs);
         }
         
-        /* CTA Section */
+        /* CTA */
         .cta {
             background: var(--charcoal-deep);
             color: var(--cream);
@@ -581,22 +552,8 @@
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
             .wellness {
                 grid-template-columns: 1fr;
-            }
-            
-            .wellness-images {
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 300px;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .gallery-item-wide {
-                grid-column: span 1;
             }
         }
         
@@ -604,50 +561,29 @@
             section {
                 padding: var(--space-lg) var(--space-md);
             }
-            
             nav {
                 padding: var(--space-md);
             }
-            
             .nav-links {
                 display: none;
             }
-            
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                padding: 0 var(--space-md);
+            .editorial-image {
+                margin: 0 var(--space-md);
             }
-            
-            .gallery-item-wide,
-            .gallery-item-tall {
-                grid-column: span 1;
-                grid-row: span 1;
+            .editorial-image img {
+                height: 50vh;
             }
-            
-            .wellness-images {
-                grid-template-columns: 1fr;
-                grid-template-rows: 250px 250px;
-            }
-            
             .features-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: var(--space-md);
             }
-            
             .neighborhood-stats {
                 flex-direction: column;
                 gap: var(--space-md);
             }
-            
-            .footer-content {
+            .footer-content, .footer-bottom {
                 flex-direction: column;
                 gap: var(--space-md);
-                text-align: center;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                gap: var(--space-sm);
                 text-align: center;
             }
         }
@@ -656,7 +592,6 @@
             .features-grid {
                 grid-template-columns: 1fr;
             }
-            
             .wellness-content {
                 padding: var(--space-lg) var(--space-md);
             }
@@ -665,18 +600,16 @@
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav>
         <a href="/" class="nav-logo">Zen Haus</a>
         <div class="nav-links">
-            <a href="#gallery">Gallery</a>
+            <a href="gallery.html">Gallery</a>
             <a href="#wellness">Wellness</a>
             <a href="#neighborhood">Location</a>
             <a href="#book">Reserve</a>
         </div>
     </nav>
 
-    <!-- Hero -->
     <section class="hero">
         <div class="hero-image">
             <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQ5MzAzODc5NDI1MDE4Njg5Nw==/original/43747a2a-ddd7-4d9b-bf61-3e6e38d60474.jpeg" alt="Zen Haus East Austin">
@@ -694,66 +627,26 @@
         </div>
     </section>
 
-    <!-- Intro -->
     <section class="intro section-narrow">
         <h2>A private wellness residence in East Austin</h2>
         <p>Zen Haus blends Japanese serenity with Scandinavian warmth—a sanctuary designed for stillness, restoration, and reconnection. Four bedrooms. Four baths. One intention: rest.</p>
     </section>
 
-    <!-- Gallery -->
-    <section class="gallery" id="gallery">
-        <div class="gallery-header">
-            <span class="text-caps">The Space</span>
-            <h2>Japandi-inspired design</h2>
+    <div class="editorial-image">
+        <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQ5MzAzODc5NDI1MDE4Njg5Nw==/original/0126db52-28d0-4df0-8068-35c6f3a2a2f8.jpeg" alt="Living space">
+        <div class="editorial-image-caption">
+            <span>The living room — oak, linen, light</span>
+            <a href="gallery.html">View Gallery</a>
         </div>
-        <div class="gallery-grid">
-            <!-- Row 1 -->
-            <div class="gallery-item gallery-item-wide">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQ5MzAzODc5NDI1MDE4Njg5Nw==/original/0126db52-28d0-4df0-8068-35c6f3a2a2f8.jpeg" alt="Living space">
-            </div>
-            <div class="gallery-item">
-                <img src="kitchen.jpg" alt="Chef's kitchen">
-            </div>
-            <!-- Row 2 -->
-            <div class="gallery-item">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1493038794250186897/original/b951fa8a-cc90-43c3-89f3-16fd0329e508.jpeg" alt="Interior details">
-            </div>
-            <div class="gallery-item gallery-item-wide">
-                <img src="bedroom.jpg" alt="Primary bedroom">
-            </div>
-            <!-- Row 3 -->
-            <div class="gallery-item gallery-item-wide">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1493038794250186897/original/08001f48-3298-47de-b56b-27f2d68b35e9.jpeg" alt="Second floor bedroom">
-            </div>
-            <div class="gallery-item">
-                <img src="bathroom.jpg" alt="Spa bathroom">
-            </div>
-            <!-- Row 4 -->
-            <div class="gallery-item">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1493038794250186897/original/3644d4f5-f58e-4571-a09f-59a834df99b4.jpeg" alt="Guest bedroom">
-            </div>
-            <div class="gallery-item gallery-item-wide">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQ5MzAzODc5NDI1MDE4Njg5Nw==/original/a41badb1-8a5c-4f7e-8a63-6a23f0c7374f.jpeg" alt="Outdoor sanctuary">
-            </div>
-            <!-- Row 5 -->
-            <div class="gallery-item gallery-item-wide">
-                <img src="coldplunge.jpg" alt="Cold plunge">
-            </div>
-            <div class="gallery-item">
-                <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-1493038794250186897/original/87f051f8-a656-4ae9-a080-92548d3d7835.jpeg" alt="Bedroom with pool access">
-            </div>
-        </div>
-    </section>
+    </div>
 
-    <!-- Features -->
     <section class="features">
         <div class="features-header">
-            <span class="text-caps">Amenities</span>
+            <span class="text-caps">The Space</span>
             <h2>Designed for restoration</h2>
         </div>
         <div class="features-grid">
             <div class="feature-item">
-                <!-- Bed icon -->
                 <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 7v11a1 1 0 001 1h16a1 1 0 001-1V7M3 7h18M3 7l2-4h14l2 4M8 14h8M8 14a2 2 0 11-4 0 2 2 0 014 0zm8 0a2 2 0 104 0 2 2 0 00-4 0z" />
                 </svg>
@@ -761,7 +654,6 @@
                 <p>King beds, luxury linens, blackout shades</p>
             </div>
             <div class="feature-item">
-                <!-- Water/pool icon -->
                 <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 15a4 4 0 004 4h10a4 4 0 004-4M3 15a4 4 0 014-4h10a4 4 0 014 4M3 15V5a2 2 0 012-2h14a2 2 0 012 2v10" />
                 </svg>
@@ -769,7 +661,6 @@
                 <p>Saltwater pool, year-round</p>
             </div>
             <div class="feature-item">
-                <!-- Sun/rays icon for infrared sauna -->
                 <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
@@ -777,7 +668,6 @@
                 <p>Red light therapy, deep restoration</p>
             </div>
             <div class="feature-item">
-                <!-- Snowflake icon for cold plunge -->
                 <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 2v20M12 2l4 4M12 2L8 6M12 22l4-4M12 22l-4-4M2 12h20M2 12l4 4M2 12l4-4M22 12l-4 4M22 12l-4-4" />
                 </svg>
@@ -787,15 +677,17 @@
         </div>
     </section>
 
-    <!-- Wellness -->
+    <div class="editorial-image">
+        <img src="bedroom.jpg" alt="Primary bedroom with floor-to-ceiling glass">
+        <div class="editorial-image-caption">
+            <span>Primary suite — floor-to-ceiling glass, pool views</span>
+            <a href="gallery.html">View Gallery</a>
+        </div>
+    </div>
+
     <section class="wellness" id="wellness">
-        <div class="wellness-images">
-            <div class="wellness-image">
-                <img src="meditation-room.jpg" alt="Meditation room with shoji walls">
-            </div>
-            <div class="wellness-image">
-                <img src="yoga-studio.jpg" alt="Private yoga and fitness studio">
-            </div>
+        <div class="wellness-image">
+            <img src="meditation-room.jpg" alt="Meditation room">
         </div>
         <div class="wellness-content">
             <span class="text-caps">Wellness</span>
@@ -812,7 +704,6 @@
         </div>
     </section>
 
-    <!-- Neighborhood -->
     <section class="neighborhood" id="neighborhood">
         <span class="text-caps">Location</span>
         <h2>Holly, East Austin</h2>
@@ -833,21 +724,17 @@
         </div>
     </section>
 
-    <!-- CTA -->
     <section class="cta" id="book">
         <h2>Reserve your stay</h2>
         <p>Four bedrooms, eight guests maximum. Book direct for the best rate.</p>
-        
         <div style="margin-top: var(--space-lg);">
             <a href="https://zenhausatx.guestybookings.com" target="_blank" class="btn btn-primary" style="padding: 20px 48px; font-size: 1rem;">Check Availability</a>
         </div>
-        
         <div style="margin-top: var(--space-md);">
             <a href="mailto:hello@zenhausatx.com" class="btn">Or inquire directly</a>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo">Zen Haus</div>
