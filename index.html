@@ -497,11 +497,6 @@
             max-width: 500px;
         }
         
-        .booking-widget {
-            margin: var(--space-lg) auto;
-            max-width: 800px;
-        }
-        
         .btn {
             display: inline-block;
             font-family: var(--font-sans);
@@ -518,6 +513,17 @@
         
         .btn:hover {
             background: var(--cream);
+            color: var(--charcoal-deep);
+        }
+        
+        .btn-primary {
+            background: var(--terracotta);
+            border-color: var(--terracotta);
+        }
+        
+        .btn-primary:hover {
+            background: var(--terracotta-light);
+            border-color: var(--terracotta-light);
             color: var(--charcoal-deep);
         }
         
@@ -802,16 +808,16 @@
         <p>One of Austin's most walkable and vibrant neighborhoods. Named among Time Out's coolest in the world. Steps from the best of East Austin.</p>
         <div class="neighborhood-stats">
             <div class="stat">
-                <div class="stat-number">5 min</div>
-                <div class="stat-label">drive to East 6th Street</div>
+                <div class="stat-number">8 min</div>
+                <div class="stat-label">walk to East 6th Street</div>
             </div>
             <div class="stat">
-                <div class="stat-number">5 min</div>
-                <div class="stat-label">drive to Downtown</div>
+                <div class="stat-number">2 mi</div>
+                <div class="stat-label">to Downtown</div>
             </div>
             <div class="stat">
-                <div class="stat-number">4 min</div>
-                <div class="stat-label">drive to Lady Bird Lake Trail</div>
+                <div class="stat-number">15 min</div>
+                <div class="stat-label">walk to Lady Bird Lake Trail</div>
             </div>
         </div>
     </section>
@@ -821,9 +827,8 @@
         <h2>Reserve your stay</h2>
         <p>Four bedrooms, eight guests maximum. Book direct for the best rate.</p>
         
-        <!-- Guesty Booking Widget -->
-        <div class="booking-widget">
-            <div id="search-widget_IO312PWQ"><script>!function(e,t,a,n,c,r){function s(t){e.console.log("[Guesty Embedded Widget]:",t)}var i,d,l,o,y,m,g,h,p,u;n&&(i=n,d=t.getElementsByTagName("head")[0],(l=t.createElement("link")).rel="stylesheet",l.type="text/css",l.href=i,l.media="all",d.appendChild(l)),o=function(){try{e[a].create(r).catch(function(e){s(e.message)})}catch(e){s(e.message)}},h=!1,y=c,m=function(){h||this.readyState&&"complete"!=this.readyState||(h=!0,o())},(g=t.createElement("script")).type="text/javascript",g.src=y,g.async="true",g.onload=g.onreadystatechange=m,p=g,(u=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,u)}(window,document,"GuestySearchBarWidget","https://s3.amazonaws.com/guesty-frontend-production/search-bar-production.css","https://s3.amazonaws.com/guesty-frontend-production/search-bar-production.js",{"siteUrl":"zenhausatx.guestybookings.com","color":"#A67C5B"});</script></div>
+        <div style="margin-top: var(--space-lg);">
+            <a href="https://zenhausatx.guestybookings.com" target="_blank" class="btn btn-primary" style="padding: 20px 48px; font-size: 1rem;">Check Availability</a>
         </div>
         
         <div style="margin-top: var(--space-md);">
