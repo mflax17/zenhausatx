@@ -549,7 +549,9 @@
             margin-top: var(--space-lg);
             padding-top: var(--space-lg);
             border-top: 1px solid rgba(245, 242, 237, 0.1);
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .book-direct-perks h3 {
@@ -560,6 +562,7 @@
             text-transform: uppercase;
             margin-bottom: var(--space-md);
             color: var(--terracotta-light);
+            text-align: center;
         }
         
         .perks-list {
@@ -568,7 +571,8 @@
             justify-content: center;
             gap: var(--space-lg);
             flex-wrap: wrap;
-            margin: 0 auto;
+            margin: 0;
+            padding: 0;
         }
         
         .perks-list li {
@@ -590,6 +594,7 @@
             font-size: 0.875rem;
             color: var(--warm-gray-light);
             text-align: center;
+            width: 100%;
         }
         
         .promo-code span {
