@@ -508,7 +508,7 @@
             margin-bottom: var(--space-md);
         }
         
-        .cta p {
+        .cta > p {
             margin: 0 auto var(--space-lg);
             color: var(--warm-gray-light);
             max-width: 500px;
@@ -542,6 +542,100 @@
             background: var(--terracotta-light);
             border-color: var(--terracotta-light);
             color: var(--charcoal-deep);
+        }
+        
+        /* Book Direct Perks */
+        .book-direct-perks {
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            border-top: 1px solid rgba(245, 242, 237, 0.1);
+        }
+        
+        .book-direct-perks h3 {
+            font-size: 1rem;
+            font-family: var(--font-sans);
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: var(--space-md);
+            color: var(--terracotta-light);
+        }
+        
+        .perks-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+            flex-wrap: wrap;
+        }
+        
+        .perks-list li {
+            font-size: 0.9375rem;
+            color: var(--warm-gray-light);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        .perks-list li::before {
+            content: '✓';
+            color: var(--terracotta-light);
+            font-weight: 500;
+        }
+        
+        .promo-code {
+            margin-top: var(--space-md);
+            font-size: 0.875rem;
+            color: var(--warm-gray-light);
+        }
+        
+        .promo-code span {
+            font-family: var(--font-sans);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--cream);
+            background: rgba(166, 124, 91, 0.3);
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+        
+        /* Sticky Mobile CTA */
+        .mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 99;
+            background: var(--charcoal-deep);
+            padding: var(--space-sm) var(--space-md);
+            border-top: 1px solid rgba(245, 242, 237, 0.1);
+        }
+        
+        .mobile-cta a {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: var(--terracotta);
+            color: var(--cream);
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 4px;
+        }
+        
+        .mobile-cta .promo-hint {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--warm-gray-light);
+            margin-top: 6px;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            text-transform: none;
         }
         
         footer {
@@ -629,6 +723,16 @@
                 flex-direction: column;
                 gap: var(--space-md);
                 text-align: center;
+            }
+            .perks-list {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+            .mobile-cta {
+                display: block;
+            }
+            footer {
+                padding-bottom: 100px;
             }
         }
         
@@ -768,12 +872,24 @@
 
     <section class="cta" id="book">
         <h2>Reserve your stay</h2>
-        <p>Four bedrooms, eight guests maximum. Book direct for the best rate.</p>
+        <p>Four bedrooms, eight guests maximum.</p>
+        
         <div style="margin-top: var(--space-lg);">
             <a href="https://zenhausatx.guestybookings.com" target="_blank" class="btn btn-primary" style="padding: 20px 48px; font-size: 1rem;">Check Availability</a>
         </div>
+        
         <div style="margin-top: var(--space-md);">
             <a href="mailto:hello@zenhausatx.com" class="btn">Or inquire directly</a>
+        </div>
+        
+        <div class="book-direct-perks">
+            <h3>Book Direct</h3>
+            <ul class="perks-list">
+                <li>5% off your stay</li>
+                <li>Flexible check-in/out when available</li>
+                <li>Personal concierge support</li>
+            </ul>
+            <p class="promo-code">Use code <span>ZEN5</span> at checkout</p>
         </div>
     </section>
 
@@ -790,6 +906,14 @@
             <span>Holly, East Austin, Texas</span>
         </div>
     </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="mobile-cta">
+        <a href="https://zenhausatx.guestybookings.com" target="_blank">
+            Check Availability
+            <span class="promo-hint">Use code ZEN5 for 5% off</span>
+        </a>
+    </div>
 
 </body>
 </html>
