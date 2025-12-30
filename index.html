@@ -157,7 +157,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            mix-blend-mode: difference;
+            background: transparent;
+            transition: background 0.3s ease;
+        }
+        
+        nav.scrolled {
+            background: var(--cream);
         }
         
         nav a {
@@ -165,7 +170,11 @@
             text-decoration: none;
             font-size: 0.875rem;
             letter-spacing: 0.05em;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease, color 0.3s ease;
+        }
+        
+        nav.scrolled a {
+            color: var(--charcoal);
         }
         
         nav a:hover {
@@ -930,6 +939,18 @@
             <span class="promo-hint">Use code ZEN5 for 5% off</span>
         </a>
     </div>
+
+    <script>
+        // Nav background on scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
 
 </body>
 </html>
